@@ -1,8 +1,5 @@
-<h1 align="center">Offline Museum Kit</h1>
-
 <p align="center">
-  <strong>A single-file procedural 3D exhibit — guided stops, captions, offline by design.</strong><br>
-  Template demo built from formulas: one HTML file, no runtime assets, readable fallback without WebGL2.
+  <img src="assets/banner.png" alt="Offline Museum Kit - a single-file procedural 3D exhibit template" width="100%">
 </p>
 
 <p align="center">
