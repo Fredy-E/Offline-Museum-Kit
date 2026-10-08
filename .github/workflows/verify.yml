@@ -8,9 +8,25 @@ permissions:
 jobs:
   test:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - run: node tests/exhibit.test.cjs
+      - name: Install dev dependencies (browsers installed separately)
+        run: npm ci
+        env:
+          PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: '1'
+      - name: Unit checks
+        run: npm test
+      - name: Rebuild page and fail on any diff (approved output must not change)
+        run: |
+          python3 build/build_museum.py
+          git diff --exit-code
+      - name: Python rebuild reproducibility and JSON escaping checks
+        run: python3 tests/test_build_museum.py
+      - name: Install Playwright Chromium
+        run: npx playwright install --with-deps chromium
+      - name: Browser checks (bundled Chromium)
+        run: npm run test:browser
