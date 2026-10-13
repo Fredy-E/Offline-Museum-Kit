@@ -52,10 +52,17 @@ Unit checks (no dependencies):
 node tests/exhibit.test.cjs
 ```
 
+UI regression (static, no browser):
+
+```sh
+node tests/ui-regression.cjs
+```
+
 Rebuild reproducibility and safe JSON embedding (Python, stdlib only):
 
 ```sh
-python tests/test_build_museum.py
+python3 build/build_museum.py
+python3 tests/test_build_museum.py
 ```
 
 Browser end-to-end checks (Playwright 1.63.0, dev-only):
@@ -65,9 +72,15 @@ npm ci
 npm run test:browser
 ```
 
+Full default verification (unit + UI regression + builder + browser):
+
+```sh
+npm run verify
+```
+
 The browser checks open the page via `file://` and through a loopback-only static server, assert that no request leaves the local machine, read real pixels back from the WebGL2 drawing buffer, and exercise navigation/clamping/keys/dots, the no-WebGL2 fallback, and print media styles. On dev machines they use the installed Chrome; in CI they use the bundled Playwright Chromium. Override with `PW_CHANNEL=chrome|msedge|bundled`.
 
-CI (badge above) runs all suites on every push, including the Python rebuild check. A manual `pages.yml` workflow prepares a static artifact for GitHub Pages; it does not enable or publish Pages by itself.
+CI (badge above) runs the full default (`npm run verify`: unit + UI regression + builder + browser) on every push, including the Python rebuild check. A manual `pages.yml` workflow prepares a static artifact for GitHub Pages; it does not enable or publish Pages by itself.
 
 ## Limits
 

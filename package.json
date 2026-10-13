@@ -5,9 +5,11 @@
   "scripts": {
     "test": "node tests/exhibit.test.cjs",
     "test:browser": "node tests/browser.cjs",
-    "screenshot": "node scripts/screenshot.cjs"
+    "screenshot": "node scripts/screenshot.cjs",
+    "verify": "node tests/exhibit.test.cjs && node tests/ui-regression.cjs && (python3 build/build_museum.py || python build/build_museum.py) && (python3 tests/test_build_museum.py || python tests/test_build_museum.py) && node tests/browser.cjs"
   },
   "devDependencies": {
     "playwright": "1.63.0"
-  }
+  },
+  "version": "0.2.0-preview.1"
 }

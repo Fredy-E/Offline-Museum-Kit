@@ -1,6 +1,116 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Offline Museum Kit</title><style>:root{color-scheme:dark;--bg:#080e19;--panel:#101a2b;--border:#263957;--text:#dce6f8;--muted:#95a8c8;--accent:#72adff;--blue:#266deb}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:15px/1.65 'Segoe UI',system-ui,sans-serif}main{max-width:1240px;margin:auto;padding:38px 28px}header{display:flex;align-items:center;justify-content:space-between;gap:20px;margin-bottom:25px}h1{font-size:43px;font-weight:650;letter-spacing:-1.6px;margin:0}h2{font-size:24px;letter-spacing:-.6px}h3{font-size:18px}p{margin:8px 0 16px}.eyebrow{font:11px Consolas,monospace;letter-spacing:2.6px;color:var(--accent);margin-bottom:10px}.subtitle{color:var(--muted);font-size:17px}.icon{display:grid;place-items:center;flex:0 0 64px;height:64px;border:1px solid #315488;border-radius:15px;background:linear-gradient(135deg,#194084,#0f203c);color:#92bdff;font-size:23px;letter-spacing:-1px;font-weight:700}.chip{font-size:11px;letter-spacing:.5px;font-weight:400;vertical-align:middle;margin-left:15px;padding:4px 8px;border:1px solid var(--border);border-radius:5px;color:var(--muted)}a{color:var(--accent)}button,.button,select,input,textarea{font:inherit}button,.button{display:inline-block;padding:9px 16px;border:1px solid #324c73;border-radius:7px;color:var(--text);background:#172740;cursor:pointer;line-height:1.45;text-decoration:none}button:hover,.button:hover{border-color:var(--accent);background:#213854}button:disabled{opacity:.5;cursor:default}.primary{background:#2364d7;border-color:#3c7bf0;color:white}.toolbar{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:20px 0}.notice{background:var(--panel);padding:12px 16px;border-left:3px solid var(--blue);border-radius:0 7px 7px 0;color:var(--muted);font-size:14px;white-space:pre-wrap}.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:24px 0}.stats>div{padding:18px 20px;background:var(--panel);border:1px solid var(--border);border-radius:9px}.stats b{display:block;font-size:27px;font-weight:650;color:#d7e8ff}.stats span{font-size:12px;color:var(--muted)}input,select,textarea{border:1px solid var(--border);border-radius:7px;background:#111d30;color:var(--text);padding:9px 12px}input::placeholder,textarea::placeholder{color:#8094b4}.filters{display:flex;gap:10px;flex-wrap:wrap}.filters input{flex:1;min-width:200px}.meta{color:var(--muted);font-size:12px;margin-top:17px}.table-wrap{overflow:auto;border:1px solid var(--border);border-radius:9px}table{border-collapse:collapse;width:100%;font-size:14px}th{text-align:left;background:#14243b;color:var(--muted);font-size:12px;font-weight:500}td,th{padding:14px 16px;border-bottom:1px solid var(--border);vertical-align:top}tr:last-child td{border-bottom:0}td strong{font-weight:600}small{display:block;color:var(--muted);font-size:12px;margin-top:4px}.badge{display:inline-block;font-size:11px;padding:3px 8px;background:#162d4e;border:1px solid #335686;color:#9ac6ff;border-radius:5px}.warn{background:#332b1b;border-color:#66532b;color:#f2cc89}details{font-size:12px;color:var(--muted)}summary{cursor:pointer;margin:8px 0;color:var(--accent)}.explain{font-size:14px;margin-top:25px;padding:14px 18px;border:1px solid var(--border);border-radius:8px}.explain p{max-width:920px}footer{margin-top:35px;border-top:1px solid var(--border);padding-top:18px;color:#748aac;font-size:12px}.split{display:grid;grid-template-columns:1fr 1fr;gap:18px}.panel{background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:22px}.panel h2{margin-top:0}textarea{width:100%;min-height:250px;resize:vertical;font:13px/1.7 Consolas,monospace}.result-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}.result-grid ul{padding-left:20px;overflow-wrap:anywhere}canvas{display:block;width:100%;border:1px solid var(--border);border-radius:10px;background:#0b1425}.controls-grid{display:flex;gap:20px;align-items:center;flex-wrap:wrap}.controls-grid label{display:flex;gap:9px;align-items:center;font-size:13px}input[type=range]{width:140px;padding:0;accent-color:var(--blue)}input[type=checkbox]{accent-color:var(--blue)}.invalid{color:#efb4b4}pre{white-space:pre-wrap;overflow-wrap:anywhere}button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,a:focus-visible{outline:2px solid var(--accent);outline-offset:3px}@media(max-width:760px){main{padding:24px 16px}h1{font-size:34px}.stats{grid-template-columns:repeat(2,1fr)}.split,.result-grid{grid-template-columns:1fr}.toolbar{gap:7px}td,th{padding:10px}.icon{display:none}.panel{padding:15px}}@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Offline Museum Kit</title>
+<style>/* Offline Museum Kit — portfolio preview shell.
+   Authoritative family style, vendored under build/vendor/ and embedded into
+   the standalone index.html by build/build_museum.py. System fonts only. */
+:root{
+  color-scheme:light dark;
+  --ui-bg:#0c1422;
+  --ui-surface:#142034;
+  --ui-ink:#eef4ff;
+  --ui-muted:#adbbd2;
+  --ui-accent:#8cbcff;
+  --ui-border:#31445f;
+  --ui-radius:12px;
+  --gold:#c9a86a;
+  --gold-line:rgba(201,168,106,.45);
+  --bg:var(--ui-bg);
+  --panel:var(--ui-surface);
+  --text:var(--ui-ink);
+  --muted:var(--ui-muted);
+  --accent:var(--ui-accent);
+  --border:var(--ui-border);
+  --blue:#266deb;
+}
+@media (prefers-color-scheme:light){
+  :root{
+    --ui-bg:#f2f5fa;
+    --ui-surface:#ffffff;
+    --ui-ink:#1d2b44;
+    --ui-muted:#4d617e;
+    --ui-accent:#204fb0;
+    --ui-border:#ccd8e9;
+    --gold:#8a6d2f;
+    --gold-line:#d9c491;
+    --blue:#204fb0;
+  }
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--ui-bg);color:var(--ui-ink);font:15px/1.65 'Segoe UI',system-ui,-apple-system,sans-serif}
+main{max-width:1100px;margin:auto;padding:28px 28px 40px;min-width:0}
+.prototype{margin:0 0 18px;padding:11px 16px;border:1px solid var(--gold-line);border-left:4px solid var(--gold);border-radius:0 var(--ui-radius) var(--ui-radius) 0;background:var(--ui-surface);color:var(--ui-ink);font-size:13.5px;line-height:1.6}
+.prototype strong{display:block;font-size:12px;letter-spacing:1.6px;text-transform:uppercase;color:var(--gold);margin-bottom:2px}
+.masthead{display:flex;align-items:flex-start;justify-content:space-between;gap:20px;margin:6px 0 18px;padding-bottom:18px;border-bottom:1px solid var(--ui-border)}
+.masthead h1{font-size:36px;font-weight:650;letter-spacing:-1.2px;margin:0 0 4px;line-height:1.1}
+.eyebrow{font:11px Consolas,Menlo,monospace;letter-spacing:2.4px;color:var(--gold);margin:0 0 8px;text-transform:uppercase}
+.subtitle{color:var(--ui-muted);font-size:16px;margin:0 0 10px;max-width:62ch}
+.facts{display:flex;gap:8px;flex-wrap:wrap;margin:0;padding:0;list-style:none}
+.facts li{font-size:12px;color:var(--ui-muted);border:1px solid var(--ui-border);border-radius:99px;padding:3px 11px;background:var(--ui-surface)}
+.icon{display:grid;place-items:center;flex:0 0 60px;height:60px;border:1px solid var(--gold-line);border-radius:14px;background:linear-gradient(135deg,#1b3a63,#0f203c);color:#e8cf9a;font-size:22px;font-weight:700;letter-spacing:-1px}
+.guide{margin:0 0 22px;padding:16px 18px;background:var(--ui-surface);border:1px solid var(--ui-border);border-radius:var(--ui-radius)}
+.guide h2{font-size:13px;letter-spacing:1.6px;text-transform:uppercase;color:var(--ui-muted);margin:0 0 10px;font-weight:600}
+.guide ol{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.guide li{display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:var(--ui-ink);min-width:0}
+.guide li b{flex:0 0 24px;height:24px;display:grid;place-items:center;border-radius:50%;border:1px solid var(--gold-line);color:var(--gold);font-size:12px;font-weight:700}
+.guide li span{color:var(--ui-muted)}
+.guide li span strong{color:var(--ui-ink);font-weight:600}
+.exhibit{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(260px,1fr);gap:20px;align-items:start}
+.stage{position:relative;min-width:0}
+.panel{background:var(--ui-surface);border:1px solid var(--ui-border);border-radius:var(--ui-radius);padding:22px;min-width:0}
+.panel h2{margin:4px 0 6px;font-size:24px;letter-spacing:-.5px;line-height:1.2}
+.panel #description{color:var(--ui-muted);min-height:3.2em}
+h2{font-size:24px;letter-spacing:-.6px}
+p{margin:8px 0 16px}
+a{color:var(--ui-accent)}
+button{font:inherit}
+button{display:inline-block;padding:9px 16px;border:1px solid var(--ui-border);border-radius:8px;color:var(--ui-ink);background:rgba(140,188,255,.08);cursor:pointer;line-height:1.45;text-decoration:none;max-width:100%}
+button:hover{border-color:var(--ui-accent)}
+button:disabled{opacity:.5;cursor:default}
+.primary{background:#2364d7;border-color:#3c7bf0;color:#fff}
+@media (prefers-color-scheme:light){.primary{background:#204fb0;border-color:#204fb0}}
+.toolbar{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:20px 0}
+#print{width:100%}
+#dots button{min-width:40px;padding:7px 10px}
+#dots button.primary{font-weight:700}
+.notice{background:var(--ui-surface);padding:12px 16px;border-left:3px solid var(--blue);border-radius:0 7px 7px 0;color:var(--ui-muted);font-size:14px;white-space:pre-wrap;margin:20px 0 0}
+.meta{color:var(--ui-muted);font-size:12px;margin-top:14px}
+footer{margin-top:35px;border-top:1px solid var(--ui-border);padding-top:18px;color:var(--ui-muted);font-size:12px}
+canvas{display:block;width:100%;border:1px solid var(--ui-border);border-radius:10px;background:#0b1425;max-width:100%}
+.captions{margin-top:28px}
+.captions>h2{font-size:13px;letter-spacing:1.6px;text-transform:uppercase;color:var(--ui-muted);margin:0 0 4px}
+.captions article{padding:18px 20px;border:1px solid var(--ui-border);border-left:4px solid var(--gold-line);border-radius:0 var(--ui-radius) var(--ui-radius) 0;margin-top:12px;background:var(--ui-surface)}
+@media (prefers-color-scheme:light){.captions article{background:#fffdf6}}
+.captions article h2{margin:0 0 4px;font-size:20px}
+.captions article p{margin:0;color:var(--ui-muted);max-width:78ch}
+button:focus-visible,a:focus-visible{outline:2px solid var(--ui-accent);outline-offset:3px}
+.skip{position:absolute;left:12px;top:-60px;z-index:99;padding:10px 16px;border-radius:0 0 10px 10px;background:var(--gold);color:#101828;font-weight:600;text-decoration:none;transition:top .2s}
+.skip:focus{top:0}
+@media(max-width:760px){main{padding:20px 14px 32px}.masthead h1{font-size:30px}.guide ol{grid-template-columns:minmax(0,1fr)}.toolbar{gap:7px}.icon{display:none}.panel{padding:16px}.exhibit{display:block}.guide{padding:14px}}
+@media(max-width:390px){main{padding:16px 12px 28px}.masthead h1{font-size:27px}.facts li{font-size:11px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important;scroll-behavior:auto!important}}
+@media print{body{background:#fff;color:#111}canvas,.toolbar,.icon{display:none}.exhibit{display:block}.panel{background:#fff;color:#111;border:1px solid #aaa}.panel #description{color:#111;min-height:0}.prototype{background:#fff;color:#111;border:1px solid #888}.captions article{break-inside:avoid;background:#fff!important;color:#111;border:1px solid #aaa}.captions article p{color:#111}footer{color:#111}a{color:#111}}
 
-.exhibit{display:grid;grid-template-columns:minmax(0,1.7fr) minmax(220px,1fr);gap:22px}.stage{position:relative}#canvas{height:430px}#canvas[hidden]{display:none}.captions{margin-top:28px}.captions article{padding:18px 0;border-top:1px solid var(--border)}@media(max-width:760px){.exhibit{display:block}#canvas{height:320px}}@media print{body{background:white;color:black}canvas,.toolbar,.icon,.notice{display:none}.exhibit{display:block}.panel{background:white;color:black;border:1px solid #aaa}.captions article{break-inside:avoid}footer{color:black}}</style></head><body><main><header><div><p class="eyebrow">FREDY-E / PORTABLE EXPERIENCES</p><h1>Offline Museum Kit</h1><p class="subtitle" id="intro"></p></div><span class="icon">OM</span></header><div class="exhibit"><section class="stage"><canvas id="canvas" aria-label="Procedural 3D exhibit"></canvas><p class="meta">← → arrow keys move between exhibits. All captions remain readable below.</p></section><section class="panel"><p class="eyebrow" id="step"></p><h2 id="title"></h2><p id="description"></p><div class="toolbar"><button id="previous">Previous</button><button class="primary" id="next">Next</button></div><div id="dots" class="toolbar"></div><button id="print">Print exhibit</button></section></div><p class="notice" id="message" role="status">A fictional exhibition, built from formulas. This page works offline.</p><section class="captions" id="captions"></section><footer>Offline Museum Kit · One HTML file · WebGL2 with readable fallback</footer></main><script>(function(root){
+#canvas{height:430px}#canvas[hidden]{display:none}@media(max-width:760px){#canvas{height:320px}}</style>
+</head>
+<body>
+<a class="skip" href="#workspace">Skip to the exhibit workspace</a>
+<main data-ui-revision="portfolio-preview-1">
+<p class="prototype" id="prototype-notice"><strong>Portfolio preview</strong>Experimental concept prototype — idea exploration only. Not a finished or production-ready product; the three fictional exhibits and their tests demonstrate the concept.</p>
+<header class="masthead"><div><p class="eyebrow">FREDY-E / PORTABLE EXPERIENCES</p><h1>Offline Museum Kit</h1><p class="subtitle" id="intro"></p><ul class="facts"><li>One HTML file</li><li>WebGL2 with readable fallback</li><li>Three guided stops</li></ul></div><span class="icon" aria-hidden="true">OM</span></header>
+<nav class="guide" aria-label="How to use this exhibit"><h2>How to use this exhibit</h2><ol><li><b>1</b><span><strong>Look</strong> — the 3D view renders one procedural form at a time.</span></li><li><b>2</b><span><strong>Move</strong> — Previous and Next, the numbered stops, or the left and right arrow keys.</span></li><li><b>3</b><span><strong>Read and print</strong> — every caption stays readable below, and Print exhibit keeps text only.</span></li></ol></nav>
+<div class="exhibit" id="workspace"><section class="stage" aria-label="3D exhibit view"><canvas id="canvas" aria-label="Procedural 3D exhibit"></canvas><p class="meta">← → arrow keys move between exhibits. All captions remain readable below.</p></section>
+<section class="panel" aria-label="Exhibit controls"><p class="eyebrow" id="step"></p><h2 id="title"></h2><p id="description"></p><div class="toolbar"><button id="previous">Previous</button><button class="primary" id="next">Next</button></div><div id="dots" class="toolbar" role="group" aria-label="Exhibit stops"></div><button id="print">Print exhibit</button></section>
+</div>
+<p class="notice" id="message" role="status">A fictional exhibition, built from formulas. This page works offline.</p>
+<section class="captions" id="captions" aria-label="All exhibit captions"><h2>All captions</h2></section>
+<footer>Offline Museum Kit · One HTML file · WebGL2 with readable fallback</footer>
+</main>
+<script>(function(root){
 function surface(type,segments=32,rings=16){segments=Math.max(3,Math.min(128,Math.floor(segments)));rings=Math.max(2,Math.min(64,Math.floor(rings)));const positions=[],normals=[],indices=[];
 for(let j=0;j<=rings;j++)for(let i=0;i<=segments;i++){const u=i/segments*2*Math.PI,v=j/rings;let p,n;
 if(type==='sphere'){const t=v*Math.PI;n=[Math.sin(t)*Math.cos(u),Math.cos(t),Math.sin(t)*Math.sin(u)];p=n;}
@@ -14,7 +124,8 @@ return{positions,normals,indices};}
 function obj(mesh){const lines=['# MeshLab Mini procedural export'];for(let i=0;i<mesh.positions.length;i+=3)lines.push('v '+mesh.positions.slice(i,i+3).join(' '));for(let i=0;i<mesh.normals.length;i+=3)lines.push('vn '+mesh.normals.slice(i,i+3).join(' '));for(let i=0;i<mesh.indices.length;i+=3)lines.push('f '+mesh.indices.slice(i,i+3).map(x=>`${x+1}//${x+1}`).join(' '));return lines.join('\n');}
 const api={surface,obj};if(typeof module!=='undefined')module.exports=api;else root.MeshGeometry=api;
 })(typeof window!=='undefined'?window:globalThis);
-</script><script>(function(root){
+</script>
+<script>(function(root){
 function matmul(a,b){const r=new Float32Array(16);for(let c=0;c<4;c++)for(let row=0;row<4;row++)for(let k=0;k<4;k++)r[c*4+row]+=a[k*4+row]*b[c*4+k];return r;}
 function perspective(aspect){const f=1/Math.tan(Math.PI/7),near=.1,far=100;return new Float32Array([f/aspect,0,0,0,0,f,0,0,0,0,(far+near)/(near-far),-1,0,0,2*far*near/(near-far),0]);}
 function transform(azimuth,elevation,distance){const c=Math.cos(azimuth),s=Math.sin(azimuth),ce=Math.cos(elevation),se=Math.sin(elevation);const y=new Float32Array([c,0,-s,0,0,1,0,0,s,0,c,0,0,0,0,1]);const x=new Float32Array([1,0,0,0,0,ce,se,0,0,-se,ce,0,0,0,-distance,1]);return matmul(x,y);}
@@ -22,7 +133,10 @@ function create(canvas){const gl=canvas.getContext('webgl2',{antialias:true});if
 function shader(type,source){const s=gl.createShader(type);gl.shaderSource(s,source);gl.compileShader(s);if(!gl.getShaderParameter(s,gl.COMPILE_STATUS))throw Error(gl.getShaderInfoLog(s));return s;}const program=gl.createProgram();gl.attachShader(program,shader(gl.VERTEX_SHADER,vertex));gl.attachShader(program,shader(gl.FRAGMENT_SHADER,fragment));gl.linkProgram(program);if(!gl.getProgramParameter(program,gl.LINK_STATUS))throw Error(gl.getProgramInfoLog(program));gl.useProgram(program);const vao=gl.createVertexArray();gl.bindVertexArray(vao);const pos=gl.createBuffer(),nor=gl.createBuffer(),tri=gl.createBuffer(),lines=gl.createBuffer();for(const [name,buffer]of[['position',pos],['normal',nor]]){gl.bindBuffer(gl.ARRAY_BUFFER,buffer);const loc=gl.getAttribLocation(program,name);gl.enableVertexAttribArray(loc);gl.vertexAttribPointer(loc,3,gl.FLOAT,false,0,0);}let triangleCount=0,lineCount=0;return{update(mesh){gl.bindBuffer(gl.ARRAY_BUFFER,pos);gl.bufferData(gl.ARRAY_BUFFER,new Float32Array(mesh.positions),gl.STATIC_DRAW);gl.bindBuffer(gl.ARRAY_BUFFER,nor);gl.bufferData(gl.ARRAY_BUFFER,new Float32Array(mesh.normals),gl.STATIC_DRAW);gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER,tri);gl.bufferData(gl.ELEMENT_ARRAY_BUFFER,new Uint32Array(mesh.indices),gl.STATIC_DRAW);triangleCount=mesh.indices.length;const edge=[];const seen=new Set();for(let i=0;i<mesh.indices.length;i+=3)for(const [a,b]of[[mesh.indices[i],mesh.indices[i+1]],[mesh.indices[i+1],mesh.indices[i+2]],[mesh.indices[i+2],mesh.indices[i]]]){const k=Math.min(a,b)+':'+Math.max(a,b);if(!seen.has(k)){seen.add(k);edge.push(a,b)}}gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER,lines);gl.bufferData(gl.ELEMENT_ARRAY_BUFFER,new Uint32Array(edge),gl.STATIC_DRAW);lineCount=edge.length;},draw({azimuth=.5,elevation=.4,distance=4,wireframe=false,normalColor=false}={}){const width=Math.round(canvas.clientWidth*Math.min(devicePixelRatio,2)),height=Math.round(canvas.clientHeight*Math.min(devicePixelRatio,2));if(canvas.width!==width||canvas.height!==height){canvas.width=width;canvas.height=height}gl.viewport(0,0,width,height);gl.clearColor(.025,.045,.085,1);gl.clear(gl.COLOR_BUFFER_BIT|gl.DEPTH_BUFFER_BIT);gl.enable(gl.DEPTH_TEST);gl.useProgram(program);gl.bindVertexArray(vao);gl.uniformMatrix4fv(gl.getUniformLocation(program,'matrix'),false,matmul(perspective(width/height),transform(azimuth,elevation,distance)));gl.uniform1i(gl.getUniformLocation(program,'normalColor'),normalColor);gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER,wireframe?lines:tri);gl.drawElements(wireframe?gl.LINES:gl.TRIANGLES,wireframe?lineCount:triangleCount,gl.UNSIGNED_INT,0);}};}
 root.MeshRenderer={create};
 })(typeof window!=='undefined'?window:globalThis);
-</script><script>
+</script>
+<script>
 const exhibit={"title": "A small museum of forms", "description": "A fictional exhibit demonstrating a portable guided 3D template.", "items": [{"title": "The sphere", "description": "A continuous surface generated from latitude and longitude. This fictional exhibit introduces the geometry of a rounded form.", "shape": "sphere", "x": -3}, {"title": "The torus", "description": "A ring generated from two circular parameters. Its repeating topology creates a surface with a central opening.", "shape": "torus", "x": 0}, {"title": "The cylinder", "description": "A circular wall capped at both ends. A simple procedural building block for tools, architecture, and exhibits.", "shape": "cylinder", "x": 3}]};const $=x=>document.getElementById(x);$('intro').textContent=exhibit.description;let selected=0,renderer;let mesh;function build(item){const model=MeshGeometry.surface(item.shape,48,24);const positions=[];for(let i=0;i<model.positions.length;i+=3)positions.push(model.positions[i]*.82,model.positions[i+1]*.82+.28,model.positions[i+2]*.82);return{...model,positions}};try{renderer=MeshRenderer.create($('canvas'))}catch(error){$('message').textContent='3D rendering is unavailable. All exhibit captions and navigation still work.';$('canvas').hidden=true;}
 exhibit.items.forEach((item,index)=>{const article=document.createElement('article'),h=document.createElement('h2'),p=document.createElement('p');h.textContent=item.title;p.textContent=item.description;article.append(h,p);$('captions').append(article);const button=document.createElement('button');button.textContent=index+1;button.setAttribute('aria-label','Go to '+item.title);button.onclick=()=>show(index);$('dots').append(button)});function show(index){selected=Math.max(0,Math.min(exhibit.items.length-1,index));const item=exhibit.items[selected];$('step').textContent=`EXHIBIT ${selected+1} / ${exhibit.items.length}`;$('title').textContent=item.title;$('description').textContent=item.description;$('previous').disabled=selected===0;$('next').disabled=selected===exhibit.items.length-1;Array.from($('dots').children).forEach((b,i)=>{b.classList.toggle('primary',i===selected);b.setAttribute('aria-pressed',String(i===selected))});mesh=build(item);renderer?.update(mesh);draw();}function draw(){renderer?.draw({azimuth:[.45,.8,.6][selected]||.5,elevation:[.25,.75,.4][selected]||.4,distance:3.8})}$('previous').onclick=()=>show(selected-1);$('next').onclick=()=>show(selected+1);$('print').onclick=()=>window.print();window.addEventListener('keydown',event=>{if(['INPUT','TEXTAREA','SELECT'].includes(event.target.tagName))return;if(event.key==='ArrowRight'){event.preventDefault();show(selected+1)}if(event.key==='ArrowLeft'){event.preventDefault();show(selected-1)}});window.addEventListener('resize',draw);show(0);
-</script></body></html>
+</script>
+</body>
+</html>
